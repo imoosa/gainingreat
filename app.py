@@ -6,17 +6,15 @@ import os
 from flask_mail import Mail
 import pymysql
 import math
-from keras.models import load_model
 pymysql.install_as_MySQLdb()
 from datetime import datetime
 import sqlalchemy
 import toml
-
+import requests
+from bs4 import BeautifulSoup
 from flask_cors import CORS
 from sqlalchemy import func
-
-#from flask_admin import Admin
-#from flask_admin.contrib.sqla import ModelView
+from googletrans import Translator, LANGUAGES
 
 with open('config.json','r') as c:
     parameters = json.load(c)['parameters']
@@ -46,7 +44,6 @@ else:
     
 
 db = SQLAlchemy(app)
-#admin = Admin(app)
 
 class Contact(db.Model):
     S_no = db.Column(db.Integer, primary_key=True)
@@ -68,8 +65,6 @@ class Post(db.Model):
     Fimage = db.Column(db.String(200), nullable=False)
     Content= db.Column(db.Text)
 
-
-#admin.add_view(ModelView(Post, db.session))
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -299,43 +294,6 @@ def word_counter():
     return render_template('result.html', words=words, count=count, parameters=parameters)
 
 
-
-"""from transformers import AutoTokenizer, TFAutoModelForSeq2SeqLM, pipeline
-import nltk
-from nltk.tokenize import sent_tokenize
-import torch
-
-
-tokenizer = AutoTokenizer.from_pretrained("tuner007/pegasus_paraphrase")
-model = TFAutoModelForSeq2SeqLM.from_pretrained("tuner007/pegasus_paraphrase", from_pt=True)
-nlp = pipeline('text2text-generation', model=model, tokenizer=tokenizer, truncation=True)
-
-def paraphrase_text(text):
-    sentences = nltk.sent_tokenize(text)
-    paraphrased_sentences = [nlp(sent)[0]['generated_text'] for sent in sentences]
-    return ' '.join(paraphrased_sentences)
-
-def translate_text(text, target_language):
-    translator = Translator()
-    paraphrased_text = translator.translate(text, dest=target_language)
-    return paraphrased_text.text"""
-
-@app.route('/paraphrasing', methods=['GET', 'POST'])
-def paraphrasing():
-    # paraphrased_text_result = None
-    # if request.method == 'POST':
-    #     context = request.form['context']
-    #     paraphrased_text = paraphrase_text(context)
-    #     target_language = request.form['target_language']
-    #     paraphrased_text_result = translate_text(paraphrased_text, target_language)
-
-    #     language_options = [{'code': code, 'name': name} for code, name in LANGUAGES.items()]
-    #     return render_template('paraphrasing.html', context=context, paraphrased_text=paraphrased_text_result, language_options=language_options)
-
-    return render_template('paraphrasing.html', paraphrased_text_result=None)
-
-
-from googletrans import Translator, LANGUAGES
 def translated_text(text, target_language):
     translator = Translator()
     translated_text = translator.translate(text, dest=target_language)
@@ -372,8 +330,7 @@ def convert():
     
     return render_template('convert.html', parameters=parameters)
 
-import requests
-from bs4 import BeautifulSoup
+
 
 
 def extract_and_format_text(url):
@@ -443,16 +400,6 @@ def web_scraping():
     return render_template('web-scraping.html', parameters=parameters, links_content=None, text_content=None, url=None)
 
 
-
-import subprocess
-
-
-    
-@app.route('/stock-market')
-def stock_market():
-    url = 'https://stock-trends.streamlit.app/'
-    return render_template('stockprediction.html',parameters=parameters, url=url)
-    
 
 
 if __name__ == '__main__':
