@@ -1,19 +1,12 @@
-Flask== 3.0.1
-Flask-SQLAlchemy== 3.1.1
-Flask-Mail==0.9.1
-Flask-CORS==4.0.0
-pymysql==1.1.0
-Werkzeug==3.0.1
-SQLAlchemy==2.0.25
-toml==0.10.2
-nltk==3.8.1
-transformers==4.37.2
-googletrans==4.0.0-rc1
-beautifulsoup4==4.12.3
-sentencepiece== 0.1.99
-requests==2.31.0
-gunicorn==21.2.0
-keras==2.3.1
-tensorflow==1.14.0
-opencv-python==4.2.0.32
 
+Flask
+Flask-SQLAlchemy
+Werkzeug
+Flask-Mail
+pymysql
+toml
+requests
+beautifulsoup4
+Flask-CORS
+googletrans==4.0.0-rc1
+requests
