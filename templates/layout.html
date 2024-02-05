@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{% block title %}Default Title{% endblock %}</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="icon" href="assets/icons/icons8-translation-64.png" rel="icons8-translation-64">
+
+
+  <!-- Google Fonts -->
+  <!--<link href="https://fonts.google.com/specimen/Playfair+Display" rel="stylesheet">-->
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/fonts/Roboto-Bold') }}">
+
+
+  <!-- Vendor CSS Files -->
+  <link href="" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ url_for('static',filename='assets/css/style.css') }}" rel="stylesheet">
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+
+  <!-- =======================================================
+  * Template Name: Bethany
+  * Updated: May 30 2023 with Bootstrap v5.3.0
+  * Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container">
+        <div class="header-container d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <a href="/">
+                    <img src="{{ url_for('static', filename='assets/img/gg-logo.png') }}" alt="Your Logo" width="">
+                </a>
+                </div>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a class="nav-link scrollto active" href="/">Home</a></li>
+            <li><a class="nav-link scrollto" href="/about">About</a></li>
+            <li><a class="nav-link scrollto" href="/blog">Blogs</a></li>
+            <li class="dropdown"><a href="#"><span>Projects</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="/paraphrasing">Paraphrasing</a></li>
+                <li><a href="/translate">Translate</a></li>
+                <li><a href="/web-scraping">Web scrapping</a></li>
+                <li><a href="/stock-market">Stock-market</a></li>
+                <li><a href="/word-counter">Word counter</a></li>
+                <!--<li><a href="/machine-learning">Machine Learning</a></li>
+                <!-- Add more categories as needed -->
+              </ul>
+            <li><a class="nav-link scrollto" href="/contact">Contact</a></li>
+            <li class="dropdown"><a href="#"><input type="text" class="input" placeholder="Search" name="q" hx-get="{{ url_for('search') }}" hx-trigger="keyup changed delay:500ms" hx-target="#results" ><i class="bi bi-search-down"></i></a>
+              <ul><li><a href="#" id="search-result-link"><div id="results"></div></a></li></ul>
+          </ul>
+          
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+      </div><!-- End Header Container -->
+    </div>
+  </header><!-- End Header -->
+  
+
+  {% block body %}  {% endblock %}
+
+
+
+
+<!--Start footer-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <!--<h3>Gaining Great</h3>-->
+            <img src="{{ url_for('static', filename='assets/img/gg-logo-footer.png') }}" alt="">
+            <p>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Categories</h4>
+            <ul>
+              <li><a href="{{ url_for('blog') }}">All</a></li>
+              <li><a href="{{ url_for('blog', Category='technology') }}">Technology</a></li>
+              <li><a href="{{ url_for('blog', Category='lifestyle') }}">Lifestyle</a></li>
+              <li><a href="{{ url_for('blog', Category='health') }}">Health</a></li>
+              <li><a href="{{ url_for('blog', Category='news') }}">news</a></li>
+              <li><a href="{{ url_for('blog', Category='education') }}">Education</a></li>
+              <!-- Add more categories as needed -->
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Join Us if you have great knowledge</h4>
+            <p></p>
+            <form action="/search" method="post">
+              <input type="text" name="q" ><input type="submit" value="Search" hx-get="{{ url_for('search') }}" hx-trigger="keyup changed delay:500ms" hx-target="#results">
+              
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright" style="position: relative;">
+          &copy; Copyright <strong><span>{{parameters['blog_name']}}</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/ -->
+          Designed by <a href="https://bootstrapmade.com/">Notitiagain</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{{ url_for('static',filename='assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/aos/aos.js') }}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/php-email-form/validate.js') }}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
+  <script>
+    function search() {
+        var searchQuery = document.getElementById('search_query').value;
+
+        // Make an AJAX request to the server
+        var xhr = new XMLHttpRequest();
+        xhr.open('Post', '/search', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Update the search results container with the response
+                document.getElementById('searchResults').innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send('search_query=' + encodeURIComponent(searchQuery));
+    }
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Get the search input and result link elements
+      var searchInput = document.querySelector('input[name="q"]');
+      var resultLink = document.getElementById('search-result-link');
+
+      // Add an event listener for changes in the search input
+      searchInput.addEventListener('input', function() {
+          // Get the value of the search input
+          var searchValue = searchInput.value;
+
+          // Update the href attribute of the result link
+          resultLink.href = "/post/" + encodeURIComponent(searchValue);
+      });
+  });
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block title %}{{ post.Title }}{% endblock %}
+{% block body %}
+
+
+ <!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center" style="background: url('{{ url_for('static', filename='assets/img/' ~ post.Image ) }}');">
+  <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+    <h1>{{ post.Title }}</h1>
+    <h2><span class="author-meta">
+      <i class="bi bi-person"></i> <a href="#">{{ post.Posted_by }}</a>
+    </span>
+    <span><i class="bi bi-clock"></i>{{ post.Date.strftime('%B %d, %Y') }}</span>
+    <span class="tag-meta">
+      <i class="bi bi-folder"></i>
+      <a href="#">{{ post.Category }}</a>
+    </span></h2>
+    <a href="#about" class="btn-get-started scrollto">Get Started</a>
+  </div>
+</section>
+<!-- End Hero -->
+
+
+
+
+<hr style="width: 0px; height: 25px; background: black; border: none;">
+        
+          {% for post in posts %}
+          
+             <article class="blog-post-wrapper">
+                <div class="post-information" >
+                  <h2>{{ post.Title }}</h2>
+                  <hr style="width: 0px; height: 10px; background: black; border: none;">
+                  <span><i class='fa fa-user'></i>Written By : {{post.Posted_by}}</a></span>
+                  <div class="entry-content" >
+                    
+                    <img src="{{ url_for('static', filename='assets/img/' + post.Fimage) }}" alt="" />
+                    
+                    
+                    <p>{{ post.Content | safe }}
+                    </p>
+                  
+                  </div>
+                </div>
+              </article>
+
+
+            
+          
+          {% endfor %}
+        
+
+
+          
+
+ <!-- End #main -->
+
+  {% endblock %}

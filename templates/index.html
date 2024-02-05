@@ -1,0 +1,199 @@
+{% extends "layout.html" %}
+{% block title %}Gaining Great{% endblock %}
+{% block body %}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center" class="img-fluid">
+  <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+    <h1>Gain Great Knowledge With Gaining Great </h1>
+    <h2>Happy Learning with Gaining Great</h2>
+    <a href="#about" class="btn-get-started scrollto">Get Started</a>
+  </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+  
+
+  <!-- ======= Why choose us Section ======= -->
+  <section id="choose-us" class="choose-us">
+    <div class="container">
+
+      <div class="row content">
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+          
+          <img src="{{ url_for('static', filename='assets/img/Untitled design.svg') }}" alt="" width="400" height="400" class="img-fluid">
+        </div>
+        <div class="col-lg-6 " data-aos="fade-right" data-aos-delay="100">
+          <h2>Why Choose us?</h2>
+          <h3>Choose us, and let knowledge be your guiding light in the data science journey.</h3>
+          <p>
+            In the world of data science, staying informed about the latest trends and developments is paramount. This is where we excel and why you should choose us. We are committed to keeping you up-to-date with the most current news, breakthroughs, and trends in data science. Our dedication to timely and relevant information ensures that you're always at the forefront of this rapidly evolving industry.
+          </p>
+          <ul>
+            <li><i class="ri-check-double-line"></i> The message suggests that the company excels in the task of keeping you informed. This indicates a commitment to research and staying on top of industry news.</li>
+            <li><i class="ri-check-double-line"></i> Not only do they provide information, but it's also timely and relevant. This implies that they don't just share news for the sake of it but curate content that's useful for professionals in the field.            </li>
+            <li><i class="ri-check-double-line"></i> Data science is a competitive field, and success often depends on access to the right information and resources. Gaining Great claims to be dedicated to helping you succeed, which can be a strong selling point.</li>
+          </ul>
+    
+        </div>
+        
+      </div>
+    
+      <div class="row content">
+        
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+          
+          <h2>Our Aim</h2>
+          <p>
+            Our overarching goal is to provide you with complete and up-to-date information about data science, equipping you with the knowledge and skills to thrive in this exciting and fast-paced field. Whether you're looking to kickstart your data science career or stay competitive in the industry, Gaining Great is your dedicated partner in this endeavor.
+          </p>
+          <p class="fst-italic">
+            Gaining Great is made up of a passionate and dedicated team of data science enthusiasts, professionals, and educators. We're not just a faceless platform; we're a community of individuals who share a common love for data science and a desire to impart that knowledge to others.
+
+Our team consists of experts with years of practical experience in the data science field. We bring our collective expertise to the table, ensuring that you receive the most relevant and valuable insights as you explore the vast world of data science. We are here to guide, support, and share our passion for data science with you.
+          </p>
+        </div>
+        <div class="col-lg-5" data-aos="fade-right" data-aos-delay="200">
+          <img src="{{ url_for('static', filename='assets/img/Untitled design.svg') }}" alt=""width="400" height="400" class="img-fluid">
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End About Section -->
+
+
+
+<!-- ======= Cta Section ======= -->
+<section id="cta" class="cta" >
+  <div class="container">
+    <div class="row">
+      <img src="{{ url_for('static', filename='assets/img/Advertise_with_us.jpg') }}" alt="Advertise with us">
+    </div>
+    </div>
+  
+  
+</section><!-- End Cta Section -->
+
+      <!-- ======= Testimonials Section ======= -->
+      <section id="testimonials" class="testimonials section-bg">
+        <div class="container">
+          <div class="col-lg-12" data-aos="fade-in" data-aos-delay="100">
+              <div class="serviceshead" data-aos="fade-right">
+                <h2>Latest Blogs</h2>
+                
+              </div>
+            </div>
+            
+            
+              <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+                  {% for post in posts[:4] %}
+                  <div class="swiper-slide">
+                    <div class="testimonial-item" style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('{{ url_for('static', filename='assets/img/' ~ post.Thumbnail ) }}');" width="550" height="360">
+                      <div class="testimonial-text"><a href="/post/{{ post.Slug }}"><h3>{{ post.Title }}</h3></a>
+                     
+                        <div class='post-meta'>
+                
+                
+                          <span><a href="#"><i class='author-image'>Posted By :{{post.Posted_by}} |</i></a></span>
+                          <span><a href="#"><i class='fa fa-calendar'>Posted On: {{ post.Dated.strftime('%B %d, %Y') }}</i></a></span>
+
+                        
+                      </div>
+                    <span ><a href="#"><i class="Category" style="color: aliceblue;">Category : {{post.Category}}</i></a></span>
+                  </div>
+                    </a>  
+                    </div>
+                  </div>
+                  {% endfor %}
+                <!-- End testimonial item -->
+                 
+                  
+    
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+      <!-- End Testimonials Section -->
+
+
+
+  <!-- ======= Cta Section ======= -->
+  <section id="cta" class="cta" >
+    <div class="container">
+      <div class="row">
+      
+
+        <img src="{{ url_for('static', filename='assets/img/Advertise_with_us.jpg') }}" alt="Advertise with us">
+      </div>
+      </div>
+    
+    
+  </section><!-- End Cta Section -->
+
+  
+
+  <!-- ======= Services Section ======= -->
+  <section id="services" class="section-bg">
+    
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-12" data-aos="fade-in" data-aos-delay="100">
+          <div class="serviceshead" data-aos="fade-right">
+            <h2>Free Tools</h2>
+          </div>
+        </div>
+        </div>
+        <div class="services">
+          <div class="services-bg"></div>
+
+            <div class="col-md-4 d-flex align-items-stretch mt-4 ">
+              <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
+                <div class="icon"><i class="icons8-translation-64"></i></div>
+                <h4><a href="">web scrapping</a></h4>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                <a href ="/web-scraping"><button class="btn btn-green">Let's go</button></a>
+              </div>
+            </div>
+
+            <div class="col-md-4 d-flex align-items-stretch mt-4">
+              <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
+                <div class="icon"><i class="bx bx-tachometer"></i></div>
+                <h4><a href="">Paraphrasing</a></h4>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                <a href ="/paraphrasing"><button class="btn btn-green">Let's go</button></a>
+              </div>
+            </div>
+
+            <div class="col-md-4 d-flex align-items-stretch mt-4">
+              <div class="icon-box" data-aos="zoom-in" data-aos-delay="400">
+                <div class="icon"><i class="bx bx-world"></i></div>
+                <h4><a href="">Word Counter</a></h4>
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+                <a href ="/word-counter"><button class="btn btn-green">Let's go</button></a>
+              </div>
+            </div>
+          </div>
+         
+           
+            
+          </div>
+        </section>
+
+          <!-- End Services Section -->
+
+
+
+
+
+
+
+</main><!-- End #main -->
+<hr class="section-hr">
+
+  {% endblock %}
