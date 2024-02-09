@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+
+
+<section id="words" class="words">
+    <div class="section-title" data-aos="fade-right">
+        <h2>Word Counter</h2>
+        </div>
+<div class="container">
+    <div class="wordtext">
+        <form method="post" action="/word-counter">
+            <div class="wording" style="">
+            <p>Word count: <span id="word_count">0</span></p>
+            <p>Character count: <span id="character_count">0</span></p>
+        </div>
+            <label for="user_input">Enter your text:</label>
+            <textarea name="user_input" id="user_input" rows="20" cols="10000" oninput="updateCount()" required></textarea>
+            <br>
+            
+        </form>
+    </div>
+</div>
+        <script>
+            function updateCount() {
+                var text = document.getElementById("user_input").value;
+                var wordCount = text.split(/\s+/).filter(function (word) {
+                    return word.length > 0;
+                }).length;
+                var characterCount = text.length;
+    
+                document.getElementById("word_count").innerText = wordCount;
+                document.getElementById("character_count").innerText = characterCount;
+            }
+        </script>
+   
+    
+
+
+
+
+   
+
+</form>
+</section>
+
+{% endblock %}

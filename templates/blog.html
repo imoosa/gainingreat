@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block title %}Blogs{% endblock %}
+{% block body %}
+
+<main id="main">
+
+ <!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center" style="background: url('{{ url_for('static', filename='assets/img/homebg.jpg' ) }}');">
+  <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+    <h1>Your New Online Presence with Bethany</h1>
+    <h2>We are a team of talented designers making websites with Bootstrap</h2>
+    <a href="#about" class="btn-get-started scrollto">Get Started</a>
+  </div>
+</section><!-- End Hero -->
+
+
+    <section class="blog" >
+      <div class="container">
+          <div class="row">
+            {% for post in posts %}
+       <div class="col-md-4 col-sm-8" style="padding-bottom: 20px ; padding-top: 30px;">
+                  <div class="post-content" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('{{ url_for('static', filename='assets/img/' ~ post.Thumbnail ) }}');" width="550" height="360">
+            <!--<div class="post-img">
+              <img src="{{ url_for('static', filename='assets/img/' + (post.Thumbnail)) }}" alt="Blog Image" title="{{post.Title}}">
+            </div>-->
+            
+            
+            <div class="post-description"> <a href="/post/{{ post.Slug }}">
+              <h2><b>{{ post.Title}}</b></h2>
+              
+              <div class='post-meta'>
+                <span><i class="Category">Category : {{post.Category}}</i></span>
+                <span><a href="#"><i class='fa fa-calender'></i>{{post.Dated.strftime('%B %d, %Y')}}</a></span>
+              
+            </div>
+                <p> <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                 
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i></p>
+                </a>
+              <a href="/post/{{ post.Slug }}" class="btn btn-green">Read more</a>
+            </div>
+          </div>
+       </div>
+        {% endfor %}
+            </div>
+         </div>
+        
+</section>
+<!-- 
+{% for post in posts %}
+<div class="image-container">
+  <img src="{{ url_for('static', filename='assets/img/' + post.Thumbnail) }}" alt="Description of the image">
+  <div class="image-caption">{{ post.Title}}</div>
+</div>
+{% endfor %}
+-->
+
+            
+              
+             <!-- End single blog -->
+             <div class="col-md-8 col-sm-8 col-xs-12">
+              <div class="row">
+              <!--<div class="blog-pagination">
+                <ul class="pagination">
+                  <li class="page-item"><a href="#" class="page-link">&lt;</a></li>
+                  <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                  <li class="page-item"><a href="#" class="page-link">2</a></li>
+                  <li class="page-item"><a href="#" class="page-link">3</a></li>
+                  <li class="page-item"><a href="#" class="page-link">&gt;</a></li>
+                </ul>
+              </div>-->
+              <div class="pagination-container">
+                {% if prev != "#" %}
+                  <a href="{{ prev }}" class="pagination-link">&lt; Previous</a>
+                {% endif %}
+              
+                <!-- Display page numbers or ellipses (...) for skipped pages -->
+                {% for page_num in range(1, last + 1) %}
+                  {% if page_num == page %}
+                    <span class="pagination-link current">{{ page_num }}</span>
+                  {% else %}
+                    <a href="/?page={{ page_num }}" class="pagination-link">{{ page_num }}</a>
+                  {% endif %}
+                {% endfor %}
+              
+                {% if next != "#" %}
+                  <a href="{{ next }}" class="pagination-link">Next &gt;</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Blog Page -->
+
+  </main><!-- End #main -->
+  
+  {% endblock %}

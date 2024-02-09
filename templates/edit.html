@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block body %}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+  <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+    <h1>Admin Panel</h1>
+    <a href="#about" class="btn-get-started scrollto">Get Started</a>
+  </div>
+</section><!-- End Hero -->
+
+<hr>
+
+<div class="container">
+  <a href="/dashboard" class="btn btn-green">Back</a>
+  <h1>Edit Post</h1>
+  <div class="form contact-form">
+    <form method="POST" action="/edit/{{ S_no }}">
+      <div class="form-group">
+        <input type="text" name="Title" class="form-control" id="Title" value="{{ post.Title }}" placeholder="Title" required>
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" name="Slug" id="Slug" value="{{ post.Slug }}" placeholder="Slug" required>
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" name="Category" id="Category" value="{{ post.Category }}" placeholder="Category" required>
+      </div>
+      <div class="form-group mt-3">
+        <input type="varchar" class="form-control" name="Image" id="Image" value="{{ post.Image }}" placeholder="Image" required>
+      </div>
+      <div class="form-group mt-3">
+        <input type="varchar" class="form-control" name="Fimage" id="Fimage" value="{{ post.Fimage }}" placeholder="Feature Image" required>
+      </div>
+      <div class="form-group mt-3">
+        <input type="varchar" class="form-control" name="Thumbnail" id="Thumbnail" value="{{ post.Thumbnail }}" placeholder="Thumbnail" required>
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" name="Posted_by" id="Posted_by" value="" placeholder="Author" required>
+      </div>
+      <div class="form-group mt-3">
+        <textarea class="form-control" name="Content" rows="30" placeholder="Content" required>{{ post.Content }}</textarea>
+      </div>
+      <input type="submit" value="Save">
+      </div>
+    </form>
+  </div>
+</div>
+<!-- End Contact Section -->
+
+
+
+{% endblock %}

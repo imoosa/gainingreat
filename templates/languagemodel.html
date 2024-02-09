@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1>Language Translator</h1>
+    <form action="/translate" method="post">
+        <label for="user_text">Enter a Text:</label>
+        <textarea name="user_text" id="user_text" rows="4" cols="50"></textarea>
+        <!-- Other form fields -->
+        <input type="submit" value="Translate">
+    </form>
+ 
+{% endblock %}

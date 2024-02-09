@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}Web-scraping{% endblock %}
+{% block body %}
+
+   <section id="webscraping">
+    <div class="section-title" data-aos="fade-right">
+        <h2>Web Scrapping</h2>
+    </div>
+    <div class="container">
+    <div class="weburl">
+   <form method="post" action="/web-scraping">
+        <label for="url">Enter URL:</label>
+        <input type="text" id="url" name="url" rows="3" cols="1000" style="width: 80%; height: 45px;">
+        <button class="btn btn-green" type="submit">Submit</button>
+    </form>
+    </div>
+    <div class="box">
+    <h1>Text Content</h1>
+    {% if text_content %}
+        
+        {% for item in text_content %}
+            {{ item | safe }}
+        {% endfor %}
+    {% endif %}
+</div>
+    <div class="box">
+    <h1>Links Content</h1>
+    
+   {% if links_content %}
+        
+        {% for item in links_content %}
+            {{ item | safe }}<br>
+        {% endfor %}
+    {% endif %}
+</div>
+  </div>
+</div>
+
+    
+
+</div>
+</section>
+    {% endblock %}
