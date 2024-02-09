@@ -2,8 +2,8 @@
     "parameters":
     {
         "local_server" : "True",
-        "local_uri": "gainingreat.cnmoususs71y.us-west-1.rds.amazonaws.com",
-        "prod_uri" : "gainingreat.cnmoususs71y.us-west-1.rds.amazonaws.com",
+        "local_uri": "mysql+pymysql://admin:ibrahim53@myserverapp.c90cug0e213b.us-east-1.rds.amazonaws.com:3306/gainingreat",
+        "prod_uri" : "mysql+pymysql://admin:ibrahim53@myserverapp.c90cug0e213b.us-east-1.rds.amazonaws.com:3306/gainingreat",
         "fb_url": "https://www.facebook.com/profile.php?id=100065635384723",
         "gmail_user": "gainingreat@outlook.com",
         "gmail_password": "Ibrahim@moosa53",
