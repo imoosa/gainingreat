@@ -16,6 +16,8 @@ from flask_cors import CORS
 from sqlalchemy import func
 from googletrans import Translator, LANGUAGES
 
+
+
 with open('config.json','r') as c:
     parameters = json.load(c)['parameters']
 
@@ -38,9 +40,18 @@ app.config.update(
 )
 mail = Mail(app)
 if(local_server):
-    app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql+pymysql://admin:ibrahim53@gainingreat.c1o6k02w8xci.ap-northeast-1.rds.amazonaws.com:3306/gainingreat'
+    app.config["SQLALCHEMY_DATABASE_URI"] = parameters['local_uri']
 else:
     app.config["SQLALCHEMY_DATABASE_URI"] = parameters['prod_uri']
+
+import aws_credentials as rds
+conn = pymysql.connect(
+    host = 'myserverapp.c90cug0e213b.us-east-1.rds.amazonaws.com',
+    port = 3306,
+    user = 'admin',
+    password = 'ibrahim53',
+    db = 'gainingreat'
+    )
     
 
 db = SQLAlchemy(app)
